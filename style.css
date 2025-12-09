@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+/* --- Global --- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Space Grotesk", sans-serif;
+  background: white;
+  color: #111;
+  /* UPRAVENO: Nastaveno pro fixní/absolutní pozicování potomků */
+  min-height: 100vh;
+  position: relative;
+}
+
+/* --- Navigation (Bublinky, Top-Left) --- */
+.nav {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 20px;
+  background-color: transparent;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto; /* Navigace je jen tak široká, jak potřebuje */
+}
+
+.nav a {
+  display: inline-block;
+  color: #111;
+  text-decoration: none;
+  opacity: 0.8;
+  border: 1px solid #111;
+  border-radius: 999px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 6px 16px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.nav a.active,
+.nav a:hover {
+  background-color: #15f036;
+  color: #000000;
+  border: 1px solid #000000;
+  opacity: 1;
+}
+
+/* --- Velké jméno (NOVÝ STYL, Top-Right) --- */
+.header-name-large {
+  position: fixed;
+  /* OPRAVENO: Posunuto nahoru */
+  top: 2px;
+  right: 65px;
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #111;
+  text-transform: uppercase;
+  z-index: 15;
+  pointer-events: none;
+}
+
+/* --- General layout --- */
+.content {
+  /* ... */
+  max-width: 1400px;
+  margin: auto;
+  /* UPRAVENO: Zvýšeno horní odsazení, aby se obsah nepřekrýval s fixními prvky */
+  padding: 160px 40px 40px 40px; /* Změna první hodnoty na 160px */
+}
+
+.title {
+  text-align: center;
+  margin-top: 0;
+}
+
+/* --- Project grid --- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 40px;
+}
+
+.project-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+.project-card:hover img {
+  filter: 
+    /* Barva: #FF99AA (Jasnější růžová) */
+    /* 1. Vnitřní jasná vrstva */ drop-shadow(
+      0 0 5px #fffcfd
+    )
+    /* 2. Střední, širší záře */ drop-shadow(0 0 15px rgba(255, 115, 185, 0.7))
+    /* 3. Vnější, nejširší a nejjemnější rozptyl */
+    drop-shadow(0 0 35px rgba(255, 153, 204, 0.4));
+
+  /* Zůstává transformace pro vizuální zvýraznění */
+  transform: scale(1.03);
+}
+
+.project-card {
+  text-decoration: none;
+  color: #111;
+}
+
+.project-card h3 {
+  margin-top: 10px;
+}
+
+/* --- Project detail --- */
+.project-detail {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px;
+}
+
+.project-detail img {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* --- Landing page --- */
+body.landing {
+  overflow: hidden;
+}
+
+.landing-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+}
+
+.landing-name {
+  font-size: 40px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.enter-btn {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #111;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.enter-btn:hover {
+  background: #15f036;
+  color: #000000;
+  border-color: #000000;
+}
+
+/* --- Float images around landing page --- */
+.float-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: -1;
+  transform: translate(calc(-50% + var(--x, 0px)), calc(-50% + var(--y, 0px)))
+    rotate(var(--r, 0deg));
+  transition: transform 0.15s ease-out;
+}
+
+/* --- About me photo --- */
+.about-photo {
+  width: 400px; /* velikost fotky */
+  display: block;
+  margin: 0px 0; /* mezery nad a pod obrázkem */
+}
+.about-wrapper {
+  display: flex; /* Použijeme Flexbox */
+  gap: 40px; /* Mezera mezi fotkou a bio textem */
+  /* Zajištění, aby se obsah zalomil na menších obrazovkách */
+  flex-wrap: wrap;
+}
+
+.about-bio {
+  /* Bio text vyplní zbývající místo vedle fotky */
+  flex-grow: 1;
+}
