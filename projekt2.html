@@ -4,19 +4,95 @@
     <meta charset="UTF-8" />
     <title>(BE)LONGING</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
+    <div class="fixed-header-wrapper"></div>
+    <div class="fixed-separator"></div>
     <h2 class="header-name-large">ALŽBĚTA ČIPEROVÁ</h2>
 
     <div class="nav"></div>
     <nav class="nav">
-      <a href="projekty.html">← ZPĚT NA PROJEKTY</a>
+      <a href="projekty.html">← OTHER PROJECTS</a>
     </nav>
 
     <div class="project-detail">
-      <img src="img/projekt1.jpg" />
-      <h1>Projekt 1</h1>
-      <p>Sem doplníš popis projektu, inspiraci, proces, techniku, cokoliv…</p>
+      <div class="project-detail-text biography-left">
+        <h1>(BE)LONGING</h1>
+        <p>
+          2025, Experimental video essay, Hi8, digitised, 31 min.; screenprint
+          on textile, each app. 240x150 cm
+        </p>
+        <p class="main-text">
+          The Master Project (Be)longing explores the quiet ache of longing -
+          not merely as absence, but as a generative force in which identity is
+          shaped, fractured, and reassembled. Drawing from personal and
+          collective experiences of voluntary migration, the work reflects on
+          the pursuit of new beginnings and the alienation, displacement, and
+          fragile search for home that often follows.
+        </p>
+      </div>
+
+      <div class="content-gallery-wrapper">
+        <div class="content-pair-wrapper standard-layout">
+          <div class="content-image-block">
+            <img src="3Be_Longing.jpg" class="gallery-img" />
+          </div>
+        </div>
+
+        <div class="content-text-block exhibitions-right">
+          <p>
+            Comprising a short film based on interviews and an installation of
+            screen prints, (Be)longing examines the tension between the decision
+            to leave and what remains. Archival and contemporary film footage
+            are interwoven to create a layered visual memoryscape, while
+            delicate screen prints evoke the transience and vulnerability of
+            identity in transition. Together, the pieces form a contemplative
+            reflection on memory, home, and the shifting contours of belonging.
+          </p>
+        </div>
+
+        <div class="content-pair-wrapper reversed-layout">
+          <div class="content-image-block">
+            <img src="8Be_Longing.jpg" class="gallery-img" />
+          </div>
+        </div>
+
+        <div class="content-pair-wrapper standard-layout">
+          <div class="content-image-block">
+            <img src="13Be_Longing.jpg" class="gallery-img" />
+          </div>
+        </div>
+
+        <div class="content-pair-wrapper reversed-layout">
+          <div class="content-image-block">
+            <img src="1Be_Longing.jpg" class="gallery-img" />
+          </div>
+        </div>
+
+        <div class="content-pair-wrapper standard-layout">
+          <div class="content-image-block">
+            <img src="4Be_Longing.jpg" class="gallery-img" />
+          </div>
+        </div>
+
+        <div class="content-pair-wrapper reversed-layout">
+          <div class="content-image-block">
+            <img src="6Be_Longing.jpg" class="gallery-img" />
+          </div>
+        </div>
+
+        <div class="content-pair-wrapper standard-layout">
+          <div class="content-image-block">
+            <img src="5Be_Longing.jpg" class="gallery-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="image-modal" class="modal">
+      <span class="modal-close">&times;</span>
+      <img class="modal-content" id="modal-image" />
     </div>
   </body>
 </html>

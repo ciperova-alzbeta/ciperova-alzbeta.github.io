@@ -4,20 +4,92 @@
     <meta charset="UTF-8" />
     <title>RECONNECTION</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
+    <div class="fixed-header-wrapper"></div>
+    <div class="fixed-separator"></div>
     <h2 class="header-name-large">ALŽBĚTA ČIPEROVÁ</h2>
 
     <div class="nav"></div>
     <nav class="nav">
-      <a href="projekty.html">← ZPĚT NA PROJEKTY</a>
+      <a href="projekty.html">← OTHER PROJECTS</a>
     </nav>
 
     <div class="project-detail">
-      <img src="telem_ciperova_alzbeta.jpg" />
-      <img src="telem_ciperova_a.jpg" />
-      <h1>Projekt 1</h1>
-      <p>Sem doplníš popis projektu, inspiraci, proces, techniku, cokoliv…</p>
+      <div class="project-detail-text biography-left">
+        <h1>RECONNECTION</h1>
+        <p>
+          2022, Video sculpture; acrylic paints, mattress, foam polyethylene,
+          yarn, rubber, video
+        </p>
+        <p class="main-text">
+          Place, where it all happens. The place. Object? Cover. Tissue and guts
+          - emotional borscht. Senses, which are supposed to make sense, one pot
+          goulash. What is sizzling under the lid? 60% water. Don’t boil, let it
+          all nicely come together.
+        </p>
+      </div>
+
+      <div class="content-gallery-wrapper">
+        <div class="content-pair-wrapper standard-layout">
+          <div class="content-text-block"></div>
+
+          <div class="content-image-block right-align-text">
+            <img src="Reconnection_1.jpg" class="gallery-img" />
+            <p>
+              Drawing on the language of human tissue, the mattress forms a
+              perforated, organic mass inhabited by ovary-like objects. Red,
+              glandular elements converge toward a uterus-like center,
+              suggesting an inner system under constant negotiation.
+            </p>
+          </div>
+        </div>
+
+        <div class="content-pair-wrapper reversed-layout">
+          <div class="content-text-block"></div>
+
+          <div class="content-image-block left-align-text">
+            <img src="Reconnection_2.jpg" class="gallery-img" />
+            <p>
+              An insulating, fatty layer is loosely bound to the tissue by
+              fragile black threads, hovering on the edge of disintegration.
+              This layer-symbolizing a turbulent accumulation of sensations and
+              emotions-spills outward from the body, evoking a recurring sense
+              of detachment between the female body and mind.
+            </p>
+          </div>
+        </div>
+
+        <div class="content-pair-wrapper standard-layout">
+          <div class="content-text-block"></div>
+
+          <div class="content-image-block right-align-text">
+            <img src="Reconnection_3.jpg" class="gallery-img" />
+            <p>
+              The work reflects the vulnerability of hormonal balance and the
+              consequences of suppressing biological rhythms within a
+              performance-driven, patriarchal environment. It points to the
+              paradox in which distancing oneself from bodily processes, often
+              demanded by social norms, leads not to control but to further
+              physical and emotional dissonance.
+            </p>
+          </div>
+        </div>
+
+        <div class="content-pair-wrapper reversed-layout">
+          <div class="content-text-block"></div>
+
+          <div class="content-image-block">
+            <img src="Reconnection_4.jpg" class="gallery-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="image-modal" class="modal">
+      <span class="modal-close">&times;</span>
+      <img class="modal-content" id="modal-image" />
     </div>
   </body>
 </html>

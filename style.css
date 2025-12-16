@@ -1,13 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
-/* --- Global --- */
+/* --- Global - ZAJIŠTĚNÍ PROTI HORIZONTÁLNÍMU ROLOVÁNÍ --- */
+html,
+body {
+  overflow-x: hidden;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: "Space Grotesk", sans-serif;
   background: white;
   color: #111;
-  /* UPRAVENO: Nastaveno pro fixní/absolutní pozicování potomků */
   min-height: 100vh;
   position: relative;
 }
@@ -17,23 +20,25 @@ body {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  gap: 8px;
+  gap: 25px;
+  width: auto;
+  max-width: 800px;
   padding: 20px 20px;
   background-color: transparent;
-  width: 100%;
   box-sizing: border-box;
   z-index: 20;
   position: fixed;
   top: 0;
   left: 0;
-  width: auto; /* Navigace je jen tak široká, jak potřebuje */
 }
 
 .nav a {
   display: inline-block;
   color: #111;
+  font-size: 13px;
   text-decoration: none;
   opacity: 0.8;
+  letter-spacing: 1px;
   border: 1px solid #111;
   border-radius: 999px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -50,28 +55,46 @@ body {
   opacity: 1;
 }
 
-/* --- Velké jméno (NOVÝ STYL, Top-Right) --- */
-.header-name-large {
+/* --- NOVÝ STYL: Fixní Kontejner (Wrapper) --- */
+.fixed-header-wrapper {
   position: fixed;
-  /* OPRAVENO: Posunuto nahoru */
-  top: 2px;
-  right: 65px;
-  font-size: 60px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: #111;
-  text-transform: uppercase;
+  top: 0;
+  right: 0;
+  width: 100vw;
   z-index: 15;
-  pointer-events: none;
+  overflow: hidden;
+  height: auto;
 }
 
-/* --- General layout --- */
-.content {
-  /* ... */
+.header-name-large {
+  position: relative;
+  top: 5px;
+  font-size: 22px;
+  font-weight: 10;
+  letter-spacing: 1px;
+  color: #111;
+  text-transform: uppercase;
+  white-space: nowrap;
+  float: right;
+  max-width: calc(100vw - 605px);
+  margin-right: 25px;
+  display: block;
+}
+
+/* --- General layout (POUZE PRO DETAIL STRÁNKY) --- */
+.content,
+.project-detail {
   max-width: 1400px;
   margin: auto;
-  /* UPRAVENO: Zvýšeno horní odsazení, aby se obsah nepřekrýval s fixními prvky */
-  padding: 160px 40px 40px 40px; /* Změna první hodnoty na 160px */
+  padding: 150px 40px 40px 40px;
+}
+.content {
+  padding-top: 150px;
+}
+
+/* Úpravy pro ABOUT ME */
+body.about-page .content {
+  padding-top: 50px;
 }
 
 .title {
@@ -82,9 +105,13 @@ body {
 /* --- Project grid --- */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   padding: 40px;
+}
+.project-card.project-shifted {
+  transform: translateY(-200px) translateX(-10px);
+  transition: transform 0.3s ease-out;
 }
 
 .project-card img {
@@ -95,15 +122,11 @@ body {
 }
 .project-card:hover img {
   filter: 
-    /* Barva: #FF99AA (Jasnější růžová) */
-    /* 1. Vnitřní jasná vrstva */ drop-shadow(
+    /* Barva: #FF99AA (Jasnější růžová) */ drop-shadow(
       0 0 5px #fffcfd
     )
-    /* 2. Střední, širší záře */ drop-shadow(0 0 15px rgba(255, 115, 185, 0.7))
-    /* 3. Vnější, nejširší a nejjemnější rozptyl */
+    drop-shadow(0 0 15px rgba(255, 115, 185, 0.7))
     drop-shadow(0 0 35px rgba(255, 153, 204, 0.4));
-
-  /* Zůstává transformace pro vizuální zvýraznění */
   transform: scale(1.03);
 }
 
@@ -116,21 +139,105 @@ body {
   margin-top: 10px;
 }
 
-/* --- Project detail --- */
-.project-detail {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px;
+/* Styling pro textovou sekci na začátku stránky (Nad vším) */
+.project-detail-text {
+  margin-bottom: 150px;
 }
 
-.project-detail img {
+/* 1. STYLY PRO PROJEKT 2 (Speciální styly pro původní mřížku odstraněny) */
+
+/* 2. STYLY PRO PROJEKT 3/GENERAL GALLERY (Střídání řádek po řádce) */
+
+/* Izolujeme pravidla Flexboxu do project-detail */
+.project-detail .content-gallery-wrapper {
+  padding-bottom: 0px;
+}
+
+/* Wrapper pro JEDEN PÁR (řádek) */
+.project-detail .content-pair-wrapper {
+  display: flex;
+  /* NA MOBILU: Prvky se řadí pod sebe */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 80px; /* Přidána mezera mezi řádky obrázků */
+}
+
+/* Textový a obrázkový blok: NA MOBILU ZABÍRAJÍ 100% */
+.project-detail .content-text-block {
   width: 100%;
-  margin-bottom: 20px;
+  max-width: 100%;
+  text-align: left !important;
+}
+.project-detail .content-image-block {
+  width: 100%;
+  margin-top: 20px;
+  margin-left: unset;
+  margin-right: unset;
 }
 
-/* --- Landing page --- */
+/* --- PRAVIDLO PRO DESKTOP: ŠIRŠÍ OBRAZOVKY (min-width: 900px) --- */
+@media (min-width: 900px) {
+  /* Project 3/General - Flexbox pro páry */
+  .project-detail .content-pair-wrapper {
+    flex-direction: row;
+  }
+
+  /* VRÁCENÍ PŮVODNÍCH ŠÍŘEK (55% text / 35% obrázek) */
+  .project-detail .content-text-block {
+    width: 55%; /* Původní hodnota */
+    max-width: 600px;
+  }
+  .project-detail .content-image-block {
+    width: 35%; /* Původní hodnota */
+    margin-top: 0;
+  }
+
+  /* NOVÉ PRAVIDLO: Zarovnání textu doprava pro druhý blok Projectu 2 */
+  .content-text-block.exhibitions-right p {
+    text-align: right;
+  }
+
+  /* Standard Layout (Text vlevo / Obrázek vpravo) */
+  .project-detail .standard-layout .content-image-block {
+    margin-left: auto;
+    margin-right: unset;
+  }
+
+  /* Speciální CSS, které jsme přidali naposledy pro text pod obrázkem 3, aby byl zarovnaný doprava */
+  .project-detail .standard-layout .content-image-block p {
+    text-align: right;
+  }
+
+  /* Reversed Layout (Obrázek vlevo / Text vpravo) */
+  .project-detail .content-pair-wrapper.reversed-layout {
+    flex-direction: row-reverse;
+  }
+
+  .project-detail .reversed-layout .content-text-block {
+    text-align: right !important;
+  }
+  .project-detail .reversed-layout .content-image-block {
+    margin-right: auto;
+    margin-left: unset;
+  }
+}
+
+/* Obrázky v galerii (Pro Modal/Lightbox) */
+.gallery-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+/* Konec stylů pro Project 3/General Gallery */
+
+/* --- LANDING PAGE STYLY (Opravené) --- */
+
 body.landing {
   overflow: hidden;
+  overflow-x: hidden;
 }
 
 .landing-center {
@@ -139,7 +246,7 @@ body.landing {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  z-index: 1;
+  z-index: 10;
 }
 
 .landing-name {
@@ -151,12 +258,12 @@ body.landing {
 .enter-btn {
   margin-top: 10px;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 8px 27px;
   border: 1px solid #111;
   border-radius: 20px;
   text-decoration: none;
   color: #111;
-  font-weight: 500;
+  font-weight: 380;
   transition: all 0.3s ease;
 }
 
@@ -166,35 +273,155 @@ body.landing {
   border-color: #000000;
 }
 
-/* --- Float images around landing page --- */
+/* Styly pro Floating Images */
 .float-img {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
+  transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y)))
+    rotate(var(--r));
   width: 200px;
   height: auto;
-  object-fit: cover;
+  max-width: 15vw;
+  z-index: 5;
+  transition: transform 0.1s linear, filter 0.3s ease;
   pointer-events: none;
-  z-index: -1;
-  transform: translate(calc(-50% + var(--x, 0px)), calc(-50% + var(--y, 0px)))
-    rotate(var(--r, 0deg));
-  transition: transform 0.15s ease-out;
 }
 
-/* --- About me photo --- */
-.about-photo {
-  width: 400px; /* velikost fotky */
+/* --- LIGHTBOX/MODAL STYLY --- */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  margin: auto;
   display: block;
-  margin: 0px 0; /* mezery nad a pod obrázkem */
-}
-.about-wrapper {
-  display: flex; /* Použijeme Flexbox */
-  gap: 40px; /* Mezera mezi fotkou a bio textem */
-  /* Zajištění, aby se obsah zalomil na menších obrazovkách */
-  flex-wrap: wrap;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
+  object-fit: contain;
 }
 
-.about-bio {
-  /* Bio text vyplní zbývající místo vedle fotky */
-  flex-grow: 1;
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+.main-text {
+  margin-top: 40px;
+  margin-bottom: -140px;
+}
+/* --- OSTATNÍ SEKCIE (ABOUT ME) --- */
+
+/* 1. BIOGRAPHY (Levý blok) */
+.biography-left {
+  max-width: 650px; /* NOVÁ ŠÍŘKA pro Bio */
+  margin-right: auto; /* Zajistí zarovnání k levé straně */
+  padding-top: 0px;
+  padding-bottom: 180px;
+}
+
+/* 2. EXHIBITIONS (Pravý blok) - POUŽÍVÁ SE PRO DRUHÝ TEXT PROJEKTU 2 */
+.exhibitions-right {
+  max-width: 1000px; /* NOVÁ ŠÍŘKA pro Exhibitions */
+  margin-left: auto; /* Klíčové: Zarovná celý blok doprava */
+  padding-bottom: 130px;
+}
+
+/* Oprava formátování seznamu (UL) */
+.exhibitions-right ul {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+/* 3. AWARDS (Blok pod ostatními) */
+.awards-solo-left {
+  max-width: 600px;
+
+  /* Vynutí zalomení a zabere celou šířku řádku */
+  flex-basis: 100%;
+
+  /* Nastavení okrajů pro zarovnání doleva */
+  margin-left: 0;
+  margin-right: auto; /* Zajistí zarovnání k levému okraji */
+
+  /* Horní mezera */
+  margin-top: -40px;
+}
+
+.studio-picture {
+  width: 100%;
+  max-width: 1400px;
+  height: auto;
+  display: block;
+  margin: 90px auto 125px auto;
+  transition: all 0.3s ease-in-out;
+}
+.studio-picture:hover {
+  filter: 
+    /* Barva: #FF99AA (Jasnější růžová) */ drop-shadow(
+      0 0 5px #fffcfd
+    )
+    drop-shadow(0 0 15px rgba(255, 115, 185, 0.7))
+    drop-shadow(0 0 35px rgba(255, 153, 204, 0.4));
+}
+
+/* --- EASTER EGG STYLY --- */
+.easter-body {
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  background: rgb(0, 0, 0);
+  overflow: hidden;
+}
+
+.centered-egg-image {
+  max-width: 12vw;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-in-out;
+}
+
+.centered-egg-image:hover {
+  filter: drop-shadow(0 0 5px #fffcfd)
+    drop-shadow(0 0 15px rgba(255, 115, 185, 0.7))
+    drop-shadow(0 0 35px rgba(255, 153, 204, 0.4));
+  transform: translate(-50%, -50%) scale(1.03);
+}
+.content p a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease-in-out;
+}
+
+.content p a:hover {
+  color: #15f036;
 }

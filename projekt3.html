@@ -4,19 +4,96 @@
     <meta charset="UTF-8" />
     <title>SAVE YOUR TEARS</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
+    <div class="fixed-header-wrapper"></div>
+    <div class="fixed-separator"></div>
     <h2 class="header-name-large">ALŽBĚTA ČIPEROVÁ</h2>
 
     <div class="nav"></div>
     <nav class="nav">
-      <a href="projekty.html">← ZPĚT NA PROJEKTY</a>
+      <a href="projekty.html">← OTHER PROJECTS</a>
     </nav>
 
     <div class="project-detail">
-      <img src="img/projekt1.jpg" />
-      <h1>Projekt 1</h1>
-      <p>Szdeněk troška</p>
+      <div class="project-detail-text biography-left">
+        <h1>SAVE YOUR TEARS</h1>
+        <p>
+          2024, Multimedia installation; paper tissues; thread; digital print on
+          textile; single channel video, 32 min.
+        </p>
+        <p class="main-text">
+          Used tissues function as reminders of temporality — traces of once
+          intense emotions translated into a form resembling scientific or
+          archival documentation. The multimedia installation invites the viewer
+          to experience tears as a memory of a feeling that once prevailed in
+          the mind with great intensity, yet in reality has - like the tears
+          theymselves - gradually faded.
+        </p>
+      </div>
+
+      <div class="content-gallery-wrapper">
+        <div class="content-pair-wrapper standard-layout">
+          <div class="content-image-block">
+            <img src="Save_your_tears_1.jpg" class="gallery-img" />
+          </div>
+        </div>
+
+        <div class="content-pair-wrapper reversed-layout">
+          <div class="content-text-block">
+            <p>
+              The work consists of used tissues suspended on threads in a grid
+              formation, each containing dried tears. Opposite them hangs a
+              handmade notebook, functioning as a personal archive. The viewer
+              can leaf through it’s pages and match each tissue to a
+              corresponding entry through a simple structural image. Each page
+              reveals the reason that led to tears at that moment, transforming
+              private emotional episodes into a catalogued record.
+            </p>
+          </div>
+          <div class="content-image-block">
+            <img src="Save_your_tears_2.jpg" class="gallery-img" />
+          </div>
+        </div>
+
+        <div class="content-pair-wrapper standard-layout">
+          <div class="content-text-block">
+            <p>
+              Alongside the dried tissues, a textile print presents a
+              photographic image of a tissue captured while the outline of the
+              tears was still visible - a reminder of the raw, immediate state
+              of emotion. Through it’s translation into textile, this rawness
+              becomes softened, mirroring the process of tears drying over time.
+              This act of material transformation forms the healing dimension of
+              the work: emotional intensity is not erased, but gently processed
+              and recontextualized.
+            </p>
+          </div>
+          <div class="content-image-block">
+            <img src="Save_your_tears_3.jpg" class="gallery-img" />
+            <p>
+              The installation is completed by a video documenting the gradual
+              drying of tears, emphasizing duration, vulnerability, and the
+              quiet transformation from immediacy to memory. Together, the
+              elements create a contemplative space where emotion is preserved
+              not in its urgency, but in its aftermath - as evidence of having
+              been felt.
+            </p>
+          </div>
+        </div>
+
+        <div class="content-pair-wrapper reversed-layout">
+          <div class="content-image-block">
+            <img src="Save_your_tears_4.jpg" class="gallery-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="image-modal" class="modal">
+      <span class="modal-close">&times;</span>
+      <img class="modal-content" id="modal-image" />
     </div>
   </body>
 </html>
